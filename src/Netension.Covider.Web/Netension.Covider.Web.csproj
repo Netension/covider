@@ -4,4 +4,18 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Netension.Request.Hosting.LightInject" Version="0.0.1-beta.71" />
+    <PackageReference Include="Netension.Request.NetCore.Asp.Hosting.LightInject" Version="0.0.1-beta.71" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="6.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Netension.Application\Netension.Covider.Application.csproj" />
+    <ProjectReference Include="..\Netension.Covider\Netension.Covider.csproj" />
+  </ItemGroup>
+
 </Project>
