@@ -19,7 +19,11 @@ namespace Netension.Covider.Commands
     {
         public CreateApplicationCommandValidator()
         {
-
+            RuleFor(c => c.Name)
+                .Matches("^[a-z][a-z0-9_$()+/-]*$")
+                .WithMessage("Invalid application name!");
+            RuleFor(c => c.Name)
+                .NotEmpty();
         }
     }
 }

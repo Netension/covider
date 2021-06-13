@@ -70,14 +70,14 @@ namespace Netension.Covider.Test.Integration.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("[AM001][Success]: Create new application", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("[INT-AM001][Success]: Create new application", new string[] {
                 "AM-Application"}, SourceLine=3)]
-        public virtual void AM001SuccessCreateNewApplication()
+        public virtual void INT_AM001SuccessCreateNewApplication()
         {
             string[] tagsOfScenario = new string[] {
                     "AM-Application"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[AM001][Success]: Create new application", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[INT-AM001][Success]: Create new application", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -102,23 +102,23 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I do not have any application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
- testRunner.When("I call /api/application/AM001 POST action", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call /api/application/am001 POST action", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.Then("AM001 should be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("am001 should be created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("[AM002][Failure]: Create existing application", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("[INT-AM002][Failure]: Create existing application", new string[] {
                 "AM-Application"}, SourceLine=9)]
-        public virtual void AM002FailureCreateExistingApplication()
+        public virtual void INT_AM002FailureCreateExistingApplication()
         {
             string[] tagsOfScenario = new string[] {
                     "AM-Application"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[AM002][Failure]: Create existing application", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[INT-AM002][Failure]: Create existing application", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -140,10 +140,10 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 11
- testRunner.Given("I have AM002 application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I have am002 application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 12
- testRunner.When("I call /api/application/AM002 POST action", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I call /api/application/am002 POST action", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
  testRunner.Then("Response should be 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
