@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Netension.Request.Abstraction" Version="0.0.1-beta.71" />
     <PackageReference Include="Netension.Request.Hosting.LightInject" Version="0.0.1-beta.71" />
     <PackageReference Include="Netension.Request.NetCore.Asp.Hosting.LightInject" Version="0.0.1-beta.71" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />

@@ -1,14 +1,14 @@
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Netension.Covider.Application;
-using Netension.Covider.Commands;
+using Netension.Covider.Application.CommandHandlers;
+using Netension.Covider.Web.Extensions;
 using Netension.Request.Hosting.LightInject.Builders;
 using Serilog;
+using System.Reflection;
 
 namespace Netension.Covider.Web
 {
@@ -26,18 +26,21 @@ namespace Netension.Covider.Web
                 .ConfigureServices(services =>
                 {
                     services.AddMvcCore()
+                        .AddApplicationPart(Assembly.GetExecutingAssembly())
                         .AddApiExplorer();
 
                     services.AddSwaggerGen(c =>
                     {
                         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Covider API", Version = "v1" });
                     });
+
+                    services.UseCouchDB("Services:CouchDb");
                 })
                 .UseRequesting(builder =>
                 {
                     builder.RegistrateCorrelation();
-                    builder.RegistrateHandlers<Wireup>();
-                    builder.RegistrateValidators<FakeCommand>();
+                    builder.RegistrateHandlers<CreateApplicationCommandHandler>();
+                    builder.RegistrateValidators<CreateApplicationCommandValidator>();
 
                     builder.RegistrateRequestSenders(builder => builder.RegistrateLoopbackSender(builder => builder.UseCorrelation(), request => true));
 
@@ -47,19 +50,17 @@ namespace Netension.Covider.Web
                         register.RegistrateHttpRequestReceiver(builder => builder.UseCorrelation());
                     });
                 })
-                .ConfigureWebHost(builder =>
+                .ConfigureWebHostDefaults(builder =>
                 {
-                    builder.UseKestrel();
-
-                    builder.Configure((context, app)  =>
+                    builder.Configure((context, app) =>
                     {
+                        app.UseErrorHandling();
+
                         if (context.HostingEnvironment.IsDevelopment())
                         {
                             app.UseSwagger();
                             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "Covider API"));
                         }
-
-                        app.UseErrorHandling();
 
                         app.UseRouting();
 
@@ -67,7 +68,8 @@ namespace Netension.Covider.Web
                         {
                             builder.MapControllers();
                         });
-                    });
+                    })
+                    .UseKestrel();
                 });
     }
 }
