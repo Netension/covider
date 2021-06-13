@@ -2,7 +2,7 @@
 
 @AM-Application
 Scenario: [AM001][Success]: Create new application
-	Given I do not have AM001 application
+	Given I do not have any application
 	When I call /api/application/AM001 POST action
 	Then AM001 should be created
 	

@@ -2,6 +2,8 @@
 using Moq;
 using Netension.Covider.Test.Integration.Factory;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http.Json;
 using System.Threading;
@@ -24,18 +26,18 @@ namespace Netension.Covider.Test.Integration.Steps
             _factory = factory;
         }
 
-        [Given("I do not have (.*) application")]
-        public async Task IDoNotHaveApplication(string name)
+        [Given("I do not have any application")]
+        public void IDoNotHaveApplication()
         {
-            _factory.StorageMock.Setup(s => s.CheckApplicationExistsAsync(It.Is<string>(n => n.Equals(name)), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(false);
+            _factory.StorageMock.Setup(s => s.GetApplicationsAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(Enumerable.Empty<string>());
         }
 
         [Given("I have (.*) application")]
-        public async Task IHaveApplication(string name)
+        public void IHaveApplication(string name)
         {
-            _factory.StorageMock.Setup(s => s.CheckApplicationExistsAsync(It.Is<string>(n => n.Equals(name)), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(true);
+            _factory.StorageMock.Setup(s => s.GetApplicationsAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new List<string> { name });
         }
 
         [When("I call /api/application/(.*) POST action")]

@@ -8,6 +8,5 @@ namespace Netension.Covider.Application.Clients
     {
         Task<IEnumerable<string>> GetApplicationsAsync(CancellationToken cancellationToken);
         Task CreateApplicationAsync(string name, CancellationToken cancellationToken);
-        Task<bool> CheckApplicationExistsAsync(string name, CancellationToken cancellationToken);
     }
 }
