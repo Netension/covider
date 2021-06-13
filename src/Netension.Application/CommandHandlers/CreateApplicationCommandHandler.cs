@@ -12,9 +12,9 @@ namespace Netension.Covider.Application.CommandHandlers
 {
     public class CreateApplicationCommandHandler : CommandHandler<CreateApplicationCommand>
     {
-        private readonly IStorage _storage;
+        private readonly IApplicationRepository _storage;
 
-        public CreateApplicationCommandHandler(IStorage storage, IQuerySender querySender, ILogger<CreateApplicationCommandHandler> logger) 
+        public CreateApplicationCommandHandler(IApplicationRepository storage, IQuerySender querySender, ILogger<CreateApplicationCommandHandler> logger) 
             : base(querySender, logger)
         {
             _storage = storage;
@@ -29,7 +29,7 @@ namespace Netension.Covider.Application.CommandHandlers
                 throw new VerificationException($"{command.Name} application has been already created");
             }
 
-            await _storage.CreateApplicationAsync(command.Name, cancellationToken);
+            await _storage.SaveAsync(command.Name, cancellationToken);
         }
     }
 }

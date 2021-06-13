@@ -7,9 +7,9 @@ namespace Netension.Covider.Application.Extensions
 {
     public static class StorageExtensions
     {
-        public static async Task<bool> IsApplicationExistsAsync(this IStorage storage, string name, CancellationToken cancellationToken)
+        public static async Task<bool> IsApplicationExistsAsync(this IApplicationRepository storage, string name, CancellationToken cancellationToken)
         {
-            var applications = await storage.GetApplicationsAsync(cancellationToken);
+            var applications = await storage.GetAsync(cancellationToken);
             return applications.Contains(name);
         }
     }

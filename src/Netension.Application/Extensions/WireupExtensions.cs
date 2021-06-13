@@ -17,7 +17,7 @@ namespace Netension.Covider.Web.Extensions
                 .Configure<IConfiguration>((options, configuration) => configuration.GetSection(section).Bind(options))
                 .ValidateDataAnnotations();
 
-            services.AddHttpClient<IStorage, CouchDbStorage>((provider, client) =>
+            services.AddHttpClient<IApplicationRepository, CouchDbApplicationRepository>((provider, client) =>
             {
                 var options = provider.GetRequiredService<IOptions<CouchDbOptions>>().Value;
                 client.BaseAddress = options.Url;

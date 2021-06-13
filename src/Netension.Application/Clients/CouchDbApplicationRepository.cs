@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Netension.Covider.Application.Clients
 {
-    internal class CouchDbStorage : IStorage
+    internal class CouchDbApplicationRepository : IApplicationRepository
     {
         private readonly HttpClient _client;
 
-        public CouchDbStorage(HttpClient client)
+        public CouchDbApplicationRepository(HttpClient client)
         {
             _client = client;
         }
@@ -20,14 +20,19 @@ namespace Netension.Covider.Application.Clients
             throw new System.NotImplementedException();
         }
 
-        public async Task CreateApplicationAsync(string name, CancellationToken cancellationToken)
+        public async Task SaveAsync(string name, CancellationToken cancellationToken)
         {
             await _client.PutAsync(name, JsonContent.Create(new object()), cancellationToken);
         }
 
-        public async Task<IEnumerable<string>> GetApplicationsAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<string>> GetAsync(CancellationToken cancellationToken)
         {
             return await _client.GetFromJsonAsync<IEnumerable<string>>("_all_dbs", cancellationToken);
+        }
+
+        public async Task DeleteAsync(string name, CancellationToken cancellationToken)
+        {
+            await _client.DeleteAsync(name, cancellationToken);
         }
     }
 }

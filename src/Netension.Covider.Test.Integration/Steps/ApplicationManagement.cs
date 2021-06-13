@@ -29,14 +29,14 @@ namespace Netension.Covider.Test.Integration.Steps
         [Given("I do not have any application")]
         public void IDoNotHaveApplication()
         {
-            _factory.StorageMock.Setup(s => s.GetApplicationsAsync(It.IsAny<CancellationToken>()))
+            _factory.StorageMock.Setup(s => s.GetAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(Enumerable.Empty<string>());
         }
 
         [Given("I have (.*) application")]
         public void IHaveApplication(string name)
         {
-            _factory.StorageMock.Setup(s => s.GetApplicationsAsync(It.IsAny<CancellationToken>()))
+            _factory.StorageMock.Setup(s => s.GetAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new List<string> { name });
         }
 
@@ -48,16 +48,30 @@ namespace Netension.Covider.Test.Integration.Steps
             _response = await client.PostAsJsonAsync($"api/Application/{name}", new object(), new CancellationTokenSource(TimeSpan.FromSeconds(10)).Token);
         }
 
+        [When("I call /api/application/(.*) DELETE action")]
+        public async Task DeleteApplication(string name)
+        {
+            var client = _factory.CreateClient();
+
+            _response = await client.DeleteAsync($"api/Application/{name}", new CancellationTokenSource(TimeSpan.FromSeconds(10)).Token);
+        }
+
         [Then("(.*) should be created")]
         public void ApplicationCreated(string name)
         {
-            _factory.StorageMock.Verify(s => s.CreateApplicationAsync(It.Is<string>(n => n.Equals(name)), It.IsAny<CancellationToken>()), Times.Once);
+            _factory.StorageMock.Verify(s => s.SaveAsync(It.Is<string>(n => n.Equals(name)), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Then("Response should be 400")]
         public void ResponseShouldBe400()
         {
             _response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Then("(.*) should be deleted")]
+        public void ShouldBeDeleted(string name)
+        {
+            _factory.StorageMock.Verify(s => s.DeleteAsync(It.Is<string>(n => n.Equals(name)), It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }

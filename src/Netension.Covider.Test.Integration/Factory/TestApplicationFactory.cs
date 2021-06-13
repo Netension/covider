@@ -9,7 +9,7 @@ namespace Netension.Covider.Test.Integration.Factory
 {
     public class TestApplicationFactory : WebApplicationFactory<Program>
     {
-        public Mock<IStorage> StorageMock { get; } = new Mock<IStorage>();
+        public Mock<IApplicationRepository> StorageMock { get; } = new Mock<IApplicationRepository>();
 
         protected override IHostBuilder CreateHostBuilder()
         {

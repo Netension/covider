@@ -22,5 +22,11 @@ namespace Netension.Covider.Web.Controllers
         {
             await _commandSender.SendAsync(new CreateApplicationCommand(name), cancellationToken);
         }
+
+        [HttpDelete("{name:required}")]
+        public async Task DeleteApplication(string name, CancellationToken cancellationToken)
+        {
+            await _commandSender.SendAsync(new DeleteApplicationCommand(name), cancellationToken);
+        }
     }
 }
