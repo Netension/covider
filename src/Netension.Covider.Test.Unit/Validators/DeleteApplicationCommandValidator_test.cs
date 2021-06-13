@@ -1,6 +1,4 @@
-﻿using Netension.Covider.Commands;
-using System.Reflection.PortableExecutable;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xunit;
 
 namespace Netension.Covider.Test.Unit.Validators

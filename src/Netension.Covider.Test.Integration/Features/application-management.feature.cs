@@ -233,6 +233,59 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("[INT-AM005][Success]: Get all applications", new string[] {
+                "AM-Application"}, SourceLine=27)]
+        public virtual void INT_AM005SuccessGetAllApplications()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "AM-Application"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[INT-AM005][Success]: Get all applications", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 28
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table1.AddRow(new string[] {
+                            "am005-1"});
+                table1.AddRow(new string[] {
+                            "am005-2"});
+#line 29
+ testRunner.Given("I have the following applications", ((string)(null)), table1, "Given ");
+#line hidden
+#line 33
+ testRunner.When("I call /api/application GET action", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table2.AddRow(new string[] {
+                            "am005-1"});
+                table2.AddRow(new string[] {
+                            "am005-2"});
+#line 34
+ testRunner.Then("Should be response with the following applications", ((string)(null)), table2, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

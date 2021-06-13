@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Netension.Covider.Commands;
 using Netension.Request.Abstraction.Senders;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,10 +11,18 @@ namespace Netension.Covider.Web.Controllers
     public class ApplicationController : ControllerBase
     {
         private readonly ICommandSender _commandSender;
+        private readonly IQuerySender _querySender;
 
-        public ApplicationController(ICommandSender commandSender)
+        public ApplicationController(ICommandSender commandSender, IQuerySender querySender)
         {
             _commandSender = commandSender;
+            _querySender = querySender;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<string>> Get(CancellationToken cancellationToken)
+        {
+            return await _querySender.QueryAsync(new GetApplicationsQuery(), cancellationToken);
         }
 
         [HttpPost("{name:required}")]

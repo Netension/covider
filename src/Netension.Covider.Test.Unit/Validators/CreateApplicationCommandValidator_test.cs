@@ -1,6 +1,4 @@
 ﻿using Fare;
-using FluentValidation;
-using Netension.Covider.Commands;
 using System.Threading.Tasks;
 using Xunit;
 

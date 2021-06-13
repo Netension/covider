@@ -2,7 +2,6 @@
 using Netension.Core.Exceptions;
 using Netension.Covider.Application.Clients;
 using Netension.Covider.Application.Extensions;
-using Netension.Covider.Commands;
 using Netension.Request.Abstraction.Senders;
 using Netension.Request.Handlers;
 using System.Threading;

@@ -5,7 +5,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Netension.Covider.Application.CommandHandlers;
-using Netension.Covider.Commands;
 using Netension.Covider.Web.Extensions;
 using Netension.Request.Hosting.LightInject.Builders;
 using Serilog;

@@ -2,7 +2,7 @@
 using Netension.Request;
 using System;
 
-namespace Netension.Covider.Commands
+namespace Netension.Covider
 {
     public class CreateApplicationCommand : Command
     {

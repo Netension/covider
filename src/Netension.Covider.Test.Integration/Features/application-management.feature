@@ -23,3 +23,15 @@ Scenario: [INT-AM004][Failure]: Delete not existing application
 	Given I do not have any application
 	When I call /api/application/am004 DELETE action
 	Then Response should be 400
+
+@AM-Application
+Scenario: [INT-AM005][Success]: Get all applications
+	Given I have the following applications
+		| Name    |
+		| am005-1 |
+		| am005-2 |
+	When I call /api/application GET action
+	Then Should be response with the following applications
+		| Name    |
+		| am005-1 |
+		| am005-2 |
