@@ -1,0 +1,35 @@
+﻿@page "/{application}"
+
+@inject NavigationManager navigationManager
+
+<h3>Instances of @Application</h3>
+
+<ul class="nav flex-column">
+    @foreach (var instance in _instances)
+    {
+        <li>
+            <span class="oi oi-list-rich" aria-hidden="true" @onclick="@(() => NavigateTo(@instance))">@instance</span>
+        </li>        
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public string Application { get; set; }
+
+    private List<string> _instances = new List<string>();
+
+    protected override Task OnInitializedAsync()
+    {
+        _instances.Add("Instance 1");
+        _instances.Add("Instance 2");
+        _instances.Add("Instance 3");
+
+        return base.OnInitializedAsync();
+    }
+
+    public void NavigateTo(string instance)
+    {
+        navigationManager.NavigateTo($"{Application}/{instance}");
+    }
+}

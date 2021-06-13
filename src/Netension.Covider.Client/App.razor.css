@@ -1,0 +1,6 @@
+﻿.title {
+    background-color: var(--background-title);
+    color: var(--foreground-title);
+
+    font-size: 2em;
+}

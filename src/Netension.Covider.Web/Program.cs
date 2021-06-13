@@ -35,6 +35,8 @@ namespace Netension.Covider.Web
                     });
 
                     services.UseCouchDB("Services:CouchDb");
+
+                    services.AddCors();
                 })
                 .UseRequesting(builder =>
                 {
@@ -63,6 +65,13 @@ namespace Netension.Covider.Web
                         }
 
                         app.UseRouting();
+
+                        app.UseCors(builder =>
+                        {
+                            builder.AllowAnyMethod();
+                            builder.AllowAnyOrigin();
+                            builder.AllowAnyHeader();
+                        });
 
                         app.UseEndpoints(builder =>
                         {

@@ -1,0 +1,11 @@
+﻿@page "/{application}/{instance}"
+
+<h3>Configuration</h3>
+
+@code {
+    [Parameter]
+    public string Application{ get; set; }
+    
+    [Parameter]
+    public string Instance{ get; set; }
+}

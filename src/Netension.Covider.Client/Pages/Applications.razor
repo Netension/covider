@@ -1,0 +1,31 @@
+﻿@page "/"
+
+@inject NavigationManager navigationManager
+@inject HttpClient client
+
+<h3>Applications</h3>
+@if (_applications is not null)
+{
+    <ul class="flex-column">
+        @foreach (var application in _applications)
+        {
+            <li>
+                <span @onclick="@(() => NavigateTo(@application))">@application</span>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private IEnumerable<string> _applications = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _applications = await client.GetFromJsonAsync<IEnumerable<string>>("api/application");
+    }
+
+    public void NavigateTo(string application)
+    {
+        navigationManager.NavigateTo($"{application}");
+    }
+}
