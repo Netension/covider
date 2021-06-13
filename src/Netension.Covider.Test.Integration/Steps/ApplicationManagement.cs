@@ -24,7 +24,7 @@ namespace Netension.Covider.Test.Integration.Steps
         public ApplicationManagement(ScenarioContext scenarioContext, TestApplicationFactory factory)
         {
             _scenarioContext = scenarioContext;
-            _factory = factory; 
+            _factory = factory;
         }
 
         [Given("I do not have any application")]

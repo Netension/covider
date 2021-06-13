@@ -17,7 +17,7 @@ namespace Netension.Covider.Test.Unit.Validators
         {
             // Arrange
             var sut = CreateSUT();
-            
+
             // Act
             var result = await sut.ValidateAsync(new CreateApplicationCommand(new Xeger("^[a-z][a-z0-9_$()+/-]*$").Generate()), default);
 

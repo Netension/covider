@@ -52,7 +52,7 @@ namespace Netension.Covider.Web
                 })
                 .ConfigureWebHostDefaults(builder =>
                 {
-                    builder.Configure((context, app)  =>
+                    builder.Configure((context, app) =>
                     {
                         app.UseErrorHandling();
 

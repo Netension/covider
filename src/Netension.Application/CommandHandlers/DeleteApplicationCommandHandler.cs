@@ -13,7 +13,7 @@ namespace Netension.Covider.Application.CommandHandlers
     {
         private readonly IApplicationRepository _storage;
 
-        public DeleteApplicationCommandHandler(IApplicationRepository storage, IQuerySender querySender, ILogger<DeleteApplicationCommand> logger) 
+        public DeleteApplicationCommandHandler(IApplicationRepository storage, IQuerySender querySender, ILogger<DeleteApplicationCommand> logger)
             : base(querySender, logger)
         {
             _storage = storage;

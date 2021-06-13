@@ -13,7 +13,7 @@ namespace Netension.Covider.Application.CommandHandlers
     {
         private readonly IApplicationRepository _storage;
 
-        public CreateApplicationCommandHandler(IApplicationRepository storage, IQuerySender querySender, ILogger<CreateApplicationCommandHandler> logger) 
+        public CreateApplicationCommandHandler(IApplicationRepository storage, IQuerySender querySender, ILogger<CreateApplicationCommandHandler> logger)
             : base(querySender, logger)
         {
             _storage = storage;

@@ -13,7 +13,7 @@ namespace Netension.Covider.Test.Integration.Factory
 
         protected override IHostBuilder CreateHostBuilder()
         {
-            var builder =  base.CreateHostBuilder();
+            var builder = base.CreateHostBuilder();
 
             builder.ConfigureServices(services =>
             {

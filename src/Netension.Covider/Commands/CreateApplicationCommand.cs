@@ -8,7 +8,7 @@ namespace Netension.Covider
     {
         public string Name { get; }
 
-        public CreateApplicationCommand(string name) 
+        public CreateApplicationCommand(string name)
             : base(Guid.NewGuid())
         {
             Name = name;

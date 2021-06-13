@@ -24,7 +24,7 @@ namespace Netension.Covider.Test.Unit.Validators
             var result = await sut.ValidateAsync(new DeleteApplicationCommand(name), default);
 
             // Arrange
-            Assert.True(result.IsValid);
+            Assert.False(result.IsValid);
         }
     }
 }

@@ -19,7 +19,8 @@ namespace Netension.Covider
     {
         public DeleteApplicationCommandValidator()
         {
-            
+            RuleFor(c => c.Name)
+                .NotEmpty();
         }
     }
 }
